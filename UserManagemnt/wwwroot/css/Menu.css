@@ -1,0 +1,202 @@
+﻿a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.ToggleButton {
+    color: var(--header-font-color-level-1);
+    background-color: var(--menu-hover-back-color-level-4);
+    border-color: var(--menu-back-color-level-1);
+    border-width: 2px 2px 2px 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+    padding: 0px 2px;
+    position: fixed;
+    height: 60px;
+    top: calc(50% - 50px);
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    /*display: flex;*/
+    width: 100%;
+   
+}
+
+#sidebar {
+    width: 200px;
+    position: fixed;
+    margin-top: 60px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: var(--menu-back-color-level-1);
+    color: var(--menu-text-color-level-1);
+    transition: all 0.3s;
+    border-style: solid;
+    border-color: var(--menu-back-color-level-2);
+    border-width: 0px 5px 0px 0px;
+    overflow: hidden;
+}
+
+    #sidebar.active {
+        margin-left: -200px;
+    }
+
+    #sidebar ul.components {
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--menu-back-color-level-3);
+    }
+
+    #sidebar ul p {
+        color: var(--menu-text-color-level-1);
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 0.75em;
+        display: block;
+    }
+
+        #sidebar ul li a:hover {
+            color: var(--menu-text-color-level-2);
+            background: var(--menu-hover-back-color-level-4);
+        }
+
+        #sidebar ul li a i {
+            font-size: 1.2em;
+            padding: 0px 5px;
+        }
+
+    #sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+        color: var(--menu-text-color-level-1);
+        background: var(--menu-back-color-level-2);
+        font-size: 1.25em;
+        border-style: solid;
+        border-color: var(--menu-hover-back-color-level-4);
+        border-width: 0px 0px 0px 5px;
+
+    }
+
+.menu-button {
+    background-color: var(--menu-button-back-color-level-1);
+    border: 3px var(--menu-button-border-color-level-1) solid;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.75em !important;
+    padding: 5px 20px !important;
+    background: var(--menu-back-color-level-3);
+    cursor: pointer;
+}
+
+ul ul ul a {
+    font-size: 0.7em !important;
+    padding: 5px 30px !important;
+    background: var(--menu-back-color-level-4);
+    border-bottom: 0px solid var(--menu-back-color-level-3);
+    border-left: 5px solid var(--menu-hover-back-color-level-4);
+    cursor: pointer;
+    color:black;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+    ul.CTAs a {
+        text-align: center;
+        font-size: 0.9em !important;
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+.header-logut-form {
+    padding: 0px 5px;
+    font-size:small;
+}
+
+.header-logut-form button {
+    padding: 1px 5px;
+    margin: 0px 0px;
+    font-size: 0.9em;
+}
+
+
+
+.SiteLogo {
+    margin: 0px;
+    text-align: center;
+}
+
+.SiteLogoBack {
+    align-content: center;
+    text-align: center;
+    height: 60px;
+    background-color: var(--header-back-color-level-1);
+    position: fixed;
+}
+
+a img {
+    height: 20px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.copyright {
+    font-size: 0.75em;
+    text-align:center;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+/*
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -200px;
+    }
+
+        #sidebar.active {
+            margin-left: 0;
+        }
+
+    #content {
+        width: 100%;
+    }
+
+        #content.active {
+            width: calc(100% - 200px);
+        }
+
+    #sidebarCollapse span {
+        display: none;
+    }
+}*/

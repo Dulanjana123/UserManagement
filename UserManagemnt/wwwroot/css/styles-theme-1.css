@@ -1,0 +1,116 @@
+﻿/* Theme color declaration 
+
+#e74c3c
+#ecf0f1
+#34495e
+
+*/
+:root {
+    /*Theme colors:
+  /*Background colors*/
+    --header-back-color-level-1: #F0F4FC;
+    --header-back-color-level-2: #313873;
+    --header-font-color-level-1: #13364F;
+    --menu-back-color-level-1: #3B628D;
+    --menu-back-color-level-2: #254B6D;
+    --menu-back-color-level-3: #2192a3;
+    --menu-back-color-level-4: #94edfb;
+    --menu-hover-back-color-level-4: #fdbc01;
+    --menu-text-color-level-1: #ffffff;
+    --menu-text-color-level-2: #353b48;
+    --menu-back-image-color-1: #ffffff;
+    --menu-button-back-color-level-1: #16a085;
+    --menu-button-border-color-level-1: #1abc9c;
+    /*Login colors*/
+    --login-back-color: #F8FCFF;
+    --login-form-back-color: #F0F4FC;
+    --login-form-border-color: #7D96F3;
+    --login-footer-backcolor: #94EDFB;
+    --login-footer-textolor: #222f3e;
+    --login-footer-color: #CCFFFF;
+    --login-button-color: #3B628D;
+    --login-text-back-color: #f1f2f6;
+    --login-text-color: #353b48;
+    /*Data table colors*/
+    --table-back-color: #ffffff;
+    --table-header-back-color: #13364F;
+    --table-header-font-color: #ffffff;
+    --table-header-icon-color: #fdbc01;
+    --table-border-color: #C5D3E2;
+    --table-row-back-color: #ffffff;
+    --table-row-alt-back-color: #f0f7f4;
+    --table-row-font-color: #000000;
+    --table-row-hover-font-color: #c3e5eb;
+    --table-alt-row-back-color: #ffffff;
+    --table-alt-row-font-color: #57606f;
+    /*Table button colors*/
+    --table-button-primary-background-color: #2e86de;
+    --table-button-primary-text-color: #13364F;
+    --table-button-primary-hover-background-color: #222f3e;
+    --table-button-primary-hover-text-color: #ffffff;
+    --table-button-primary-disabled-background-color: #549ce4;
+    --table-button-primary-disabled-text-color: #e7e4e4;
+    --table-button-success-background-color: #10ac84;
+    --table-button-success-text-color: #13364F;
+    --table-button-success-hover-background-color: #222f3e;
+    --table-button-success-hover-text-color: #ffffff;
+    --table-button-danger-background-color: #ee5253;
+    --table-button-danger-text-color: #13364F;
+    --table-button-danger-hover-background-color: #222f3e;
+    --table-button-danger-hover-text-color: #ffffff;
+    --table-button-warning-background-color: #ff9f43;
+    --table-button-warning-text-color: #13364F;
+    --table-button-warning-hover-background-color: #222f3e;
+    --table-button-warning-hover-text-color: #ffffff;
+    --table-button-info-background-color: #2192a3;
+    --table-button-info-text-color: #13364F;
+    --table-button-info-hover-background-color: #222f3e;
+    --table-button-info-hover-text-color: #ffffff;
+    /*Form element colors*/
+    --form-background-color: #f1f2f6;
+    --form-border-color: #C5D3E2;
+    --form-a-color: #40739e;
+    --form-a-hover-color: #487eb0;
+    --form-a-visited-color: #2f3640;
+    /*Button element colors*/
+    --button-primary-background-color: #2e86de;
+    --button-primary-text-color: #ffffff;
+    --button-primary-hover-background-color: #222f3e;
+    --button-primary-hover-text-color: #ffffff;
+    --button-primary-hover-icon: '\01F896';
+    --button-primary-disabled-background-color: #549ce4;
+    --button-primary-disabled-text-color: #e7e4e4;
+    --button-success-background-color: #10ac84;
+    --button-success-text-color: #ffffff;
+    --button-success-hover-background-color: #222f3e;
+    --button-success-hover-text-color: #ffffff;
+    --button-success-hover-icon: '\01F896';
+    --button-danger-background-color: #ee5253;
+    --button-danger-text-color: #ffffff;
+    --button-danger-hover-background-color: #222f3e;
+    --button-danger-hover-text-color: #ffffff;
+    --button-danger-hover-icon: '\01F896';
+    --button-warning-background-color: #fe723c;
+    --button-warning-text-color: #ffffff;
+    --button-warning-hover-background-color: #222f3e;
+    --button-warning-hover-text-color: #ffffff;
+    --button-warning-hover-icon: '\01F896';
+    --button-info-background-color: #2192a3;
+    --button-info-text-color: #ffffff;
+    --button-info-hover-background-color: #222f3e;
+    --button-info-hover-text-color: #ffffff;
+    --button-info-hover-icon: '\01F896';
+    --button-light-background-color: #c8d6e5;
+    --button-light-text-color: #ffffff;
+    --button-light-hover-background-color: #222f3e;
+    --button-light-hover-text-color: #ffffff;
+    --button-light-hover-icon: '\01F896';
+    --button-dark-background-color: #222f3e;
+    --button-dark-text-color: #ffffff;
+    --button-dark-hover-background-color: #c8d6e5;
+    --button-dark-hover-text-color: #000000;
+    --button-dark-hover-icon: '\01F896';
+    /*Label colors*/
+
+    --label-header-text-color: #678ab6;
+}
