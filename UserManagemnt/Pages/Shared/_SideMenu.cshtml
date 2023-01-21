@@ -1,5 +1,5 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    
 *@
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Environment;
 @{
@@ -8,7 +8,6 @@
 <div class="wrapper">
 
     <div class="SiteLogoBack">
-        @*OIMS LOGO*@
         <img src="~/img/header.svg" width="200px" alt="Logo" class="SiteLogo" />
     </div>
 
@@ -16,9 +15,8 @@
         <nav id="sidebar" class="content mCustomScrollbar light" data-mcs-theme="minimal-dark">
 
             <ul class="list-unstyled components nav-stacked">
-
                 <li class="active">
-                    <a asp-page="Index" aria-expanded="false"><i class="fa fa-home"></i> Home</a>
+                    <a href="/Index" aria-expanded="false"><i class="fa fa-home"></i> Home</a>
                 </li>
 
                 <li>
@@ -26,266 +24,28 @@
                         <i class="fas fa-database"></i> Master Data
                     </a>
                     <ul class="collapse list-unstyled" id="MasterData">
+
                         <li>
-                            <a href="/MasterData/Packing/PackingTeam">
-                                <img src="~/img/window-table.svg" />Packing Teams
+                            <a href="/Admin/Persons/List">
+                                <img src="~/img/window-table.svg" />Person
                             </a>
                         </li>
                         <li>
-                            <a href="/MasterData/Packing/CartonType">
-                                <img src="~/img/window-table.svg" />Carton Type
+                            <a href="/Admin/Persons/Add">
+                                <img src="~/img/window-table.svg" />Create Person
                             </a>
                         </li>
                         <li>
-                            <a href="/MasterData/Packing/CartonCombination">
-                                <img src="~/img/window-table.svg" />Carton Combinations
+                            <a href="#">
+                                <img src="~/img/User.jpg" />Register Admin
                             </a>
                         </li>
-                        <li>
-                            <a href="/MasterData/Packing/CartonOutReason">
-                                <img src="~/img/window-table.svg" />Carton Out Reason
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Packing/PolybagOutReason">
-                                <img src="~/img/window-table.svg" />Adjust Pack Out Reason
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Buyer">
-                                <img src="~/img/window-table.svg" />Buyer
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Buy">
-                                <img src="~/img/window-table.svg" />Buy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Location">
-                                <img src="~/img/window-table.svg" />Location
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Season">
-                                <img src="~/img/window-table.svg" />Season
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Style">
-                                <img src="~/img/window-table.svg" />Style
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Packing/PackingPolyOutReason">
-                                <img src="~/img/window-table.svg" />Undo Pack Out Reason
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Packing/ScrapPolyBagOutReason">
-                                <img src="~/img/window-table.svg" />Scrap Pack Out Reason
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/MasterData/Packing/TransferPolyBagOutReason">
-                                <img src="~/img/window-table.svg" />Transfer Pack Out Reason
-                            </a>
-                        </li>
+                        
                     </ul>
-                </li>
-
-                <li>
-                    <a href="#Cutting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-cut"></i> Cutting
-                    </a>
-                    <ul class="collapse list-unstyled" id="Cutting">
-                        <li>
-                            <a href="#sub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <img src="~/img/window-table.svg" />Cutting
-                            </a>
-                            <ul class="collapse list-unstyled" id="sub">
-                                <li>
-                                    <a href="#"><img src="~/img/User.jpg" />Cutting</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#Sewing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-tshirt"></i> Sewing
-                    </a>
-                    <ul class="collapse list-unstyled" id="Sewing">
-                        <li>
-                            <a href="#sub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <img src="~/img/window-table.svg" />Sewing
-                            </a>
-                            <ul class="collapse list-unstyled" id="sub">
-                                <li>
-                                    <a href="#"><img src="~/img/User.jpg" />Sewing</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#Quality" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-check-double"></i> Quality Checking
-                    </a>
-                    <ul class="collapse list-unstyled" id="Quality">
-                        <li>
-                            <a href="#sub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <img src="~/img/window-table.svg" />Quality
-                            </a>
-                            <ul class="collapse list-unstyled" id="sub">
-                                <li>
-                                    <a href="#"><img src="~/img/User.jpg" />Quality</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#Packing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-box-open"></i> Packing
-                    </a>
-                    <ul class="collapse list-unstyled" id="Packing">
-                        <li>
-                            <a href="/PackingUser">
-                                <img src="~/img/window-table.svg" />Register Packers
-                            </a>
-                        </li>
-                        <li>
-                            <a onclick="window.open('/Packing/DownloadPackingPlan' + location.search)">
-                                <img src="~/img/window-table.svg" />Download Packing Plan
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#dailyForecast" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <img src="~/img/window-table.svg" /> Daily Forcast
-                            </a>
-                            <ul class="collapse list-unstyled" id="dailyForecast">
-                                <li>
-                                    <a href="/Packing/DailyForecastDetails">
-                                        <img src="~/img/window-table.svg" />Update Daily Forecast
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/Packing/PolybagRequirementDetails">
-                                <img src="~/img/window-table.svg" />Pack Out Requirement Detail
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Packing/PrintPolybagOutBarcodeTicket">
-                                <img src="~/img/window-table.svg" />Print Pack Out Barcode Ticket
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Packing/PolyBagOutRecordDetails/SelectPackingTeamStyleForForecast">
-                                <img src="~/img/window-table.svg" />Update Pack Out
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Packing/PolyBagOutRecordDetails/PolyBagOutRecode?flagRedirect=AdjustPolyBagOut">
-                                <img src="~/img/window-table.svg" />Adjust Pack Out
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Packing/PolyBagOutRecordDetails/PolyBagOutRecode?flagRedirect=ViewPolyBagOut">
-                                <img src="~/img/window-table.svg" />View Pack Out
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Packing/PolyBagOutRecordDetails/PolyBagOutRecode?flagRedirect=ScrapPolyOut">
-                                <img src="~/img/window-table.svg" /> Scrap Pack Out
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Packing/PolyBagOutRecordDetails/PolyBagOutRecode?flagRedirect=TransferPolyOut">
-                                <img src="~/img/window-table.svg" /> Transfer Packing Team
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#sub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <img src="~/img/window-table.svg" /> Pack Out Sample/Receive
-                            </a>
-                            <ul class="collapse list-unstyled" id="sub">
-                                <li>
-                                    <a href="/Packing/PolyBagOutRecordDetails/PolyBagOutRecode?flagRedirect=PolyOutSampleSend">
-                                        <img src="~/img/window-table.svg" /> Pack Out Sample Send
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Packing/PolyBagOutRecordDetails/PolyBagOutRecode?flagRedirect=PolyOutSampleReceive">
-                                        <img src="~/img/window-table.svg" /> Pack Out Sample Receive
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="#Reports" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <img src="~/img/window-table.svg" /> Reports
-                            </a>
-                            <ul class="collapse list-unstyled" id="Reports">
-                                <li>
-                                    <a href="/reports/packing/RptHourlyPackOut">
-                                        <img src="~/img/window-table.svg" /> Hourly Polybag Out Details
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#Admin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-user-shield"></i> Administrator
-                    </a>
-                    <ul class="collapse list-unstyled" id="Admin">
-                        <li>
-                            <a routerLink="/budget" routerLinkActive="active"><img src="~/img//window.svg" />Budget</a>
-                        </li>
-                        <li>
-                            <a routerLink="/budgets" routerLinkActive="active">
-                                <img src="~/img//window-table.svg" />Budget
-                                List
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#About" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-info-circle"></i> About
-                    </a>
-                    <ul class="collapse list-unstyled" id="About">
-                        <li>
-                            <a href="#sub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <img src="~/img/window-table.svg" />About
-                            </a>
-                            <ul class="collapse list-unstyled" id="sub">
-                                <li>
-                                    <a href="#"><img src="~/img/User.jpg" />About</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="menu-button">
-                    <a href="/PackingMobile/">
-                        <i class="fas fa-box-open"></i> Packing Operation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-tablet-alt"></i>
-                    </a>
                 </li>
             </ul>
-        <p class="copyright">© 2023 EmjayPenguin/ITS.<br />All rights reserved.<br /> UMS - @Environment.EnvironmentName</p>
+
+        <p class="copyright">© 2023 ITS.<br />All rights reserved.<br /> PIMS - @Environment.EnvironmentName</p>
         </nav>
     
 

@@ -1,0 +1,153 @@
+﻿@page "{id:Guid}"
+@model UserManagemnt.Pages.Admin.Persons.EditModel
+@{
+}
+
+
+<div class="form-content">
+    <div class="inner-form">
+
+        <h1><i class="far fa-plus-square"></i> Edit: Person</h1>
+        <hr />
+
+    <partial name="_Notification">
+
+    @if(Model.person != null)
+    {
+
+          <form method="post">
+            <div class="row">
+                <div class="col-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label for="id"  class="control-label">Id</label>
+                        <input type="text" class="form-control" id="id" asp-for="person.Id" readonly/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstName"  class="control-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" asp-for="person.FirstName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName"  class="control-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" asp-for="person.LastName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile"  class="control-label">Mobile</label>
+                        <input type="text" class="form-control" id="mobile" asp-for="person.Mobile" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email"  class="control-label">Email</label>
+                        <input type="email" class="form-control" id="email" asp-for="person.Email" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="button button-primary" asp-page-handler="Edit">
+                            <span><i class="far fa-plus-square"></i> Update</span>
+                        </button>
+
+                        <button type="submit" class="button button-danger" asp-page-handler="Delete">
+                            <span><i class="far fa-minus-square"></i> Delete</span>
+                        </button>
+                        <a asp-page="List" class="button button-info"><i class="fas fa-chevron-circle-left"></i> Back to List</a>
+                    </div>
+
+                    
+                </div>
+
+                <div class="col-6">
+                    
+                    <div class="form-group">
+                        <label for="sSN"  class="control-label">SSN</label>
+                        <input type="text" class="form-control" id="sSN" asp-for="person.SSN"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dOB"  class="control-label">Date Of Birth</label>
+                        <input type="date" class="form-control" id="dOB" asp-for="person.DOB"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address"  class="control-label">Address</label>
+                        <input type="text" class="form-control" id="address" asp-for="person.Address"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileImageUpload"  class="control-label">Profile Image Upload</label>
+                        <input type="file" id="profileImageUpload" asp-for="profileImage"/>
+                        <hr/>
+                        @if (Model.person.ProfileImageUrl != null)
+                        {
+                            <label class="control-label">Profile Image:</label>
+                            <br/>
+                            <img src="@Model.person.ProfileImageUrl" id="profileImageDisplay" style="width:200px;height:auto;"  />
+                        }
+                        else
+                        {
+                             <label class="control-label" style="display:none;">Profile Image:</label>
+                             <br/>
+                             <img src="" id="profileImageDisplay" style="display:none; width:200px;height:auto;"  />
+                        }
+                       
+                    </div>
+
+                    <div class="form-group" style="display:none;">
+                        <label for="profileImageUrl"  class="control-label">Profile Image Url</label>
+                        <input type="text" class="form-control" id="profileImageUrl" asp-for="person.ProfileImageUrl"  readonly/>
+                    </div>
+                </div>
+
+            </div>
+          </form>
+
+    }
+    else
+    {
+        <div class="container">
+            <p>Person Not Found!</p>
+        </div>
+    }
+    </div>
+</div>
+    
+
+@section Scripts {
+    <script>
+
+        const profileImageUploadElement = document.getElementById('profileImageUpload');
+        const profileImageUrl = document.getElementById('profileImageUrl');
+        const profileImageDisplay = document.getElementById('profileImageDisplay');
+
+        async function uploadProfileImage(e) {
+            console.log(e.target.files[0]);
+            
+            let data = new FormData();
+            data.append('file', e.target.files[0]);
+
+            await fetch('/api/images', {
+                method: 'POST',
+                headers: {
+                    'Accept': '*/*',
+                },
+                body: data
+            }).then(response => response.json())
+                .then(result => {
+                    profileImageUrl.value = result.link;
+                    profileImageDisplay.style.display = 'block';
+                    profileImageDisplay.src = result.link;
+                });
+        }
+
+        profileImageUploadElement.addEventListener('change', uploadProfileImage);
+
+    </script>
+}
+
+
+
+

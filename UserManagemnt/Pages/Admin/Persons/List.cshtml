@@ -1,0 +1,78 @@
+﻿@page
+@model UserManagemnt.Pages.Admin.Persons.ListModel
+@{
+}
+
+
+
+<div class="form-content">
+        <div class="inner-form">
+
+            <h1><i class="far fa-list-alt"></i> Persons</h1>
+            <hr />
+            <p><a class="table-btn-create" asp-page="Add"><i class="far fa-plus-square"></i> Create New </a> </p>
+
+            <partial name="_Notification">
+
+            @if (Model.PersonList != null && Model.PersonList.Any())
+            {
+              <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            First Name
+                        </th>
+                        <th>
+                            Last Name
+                        </th>
+                        <th>
+                            Mobile
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PersonList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mobile)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SSN)
+                            </td>
+                            <td>
+                                <a class="table-btn-edit" asp-page="./Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i> Edit</a> 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+              </table>
+            }
+            else
+            {
+                <div class="container">
+                    <p>No person were found!</p>
+                </div>
+            }
+
+
+        </div>
+    </div>

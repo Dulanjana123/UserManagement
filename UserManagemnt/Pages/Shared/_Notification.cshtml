@@ -1,0 +1,31 @@
+﻿@using UserManagemnt.Models.ViewModels
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var notification = (Notification)ViewData["Notification"];
+    if (notification != null)
+    {
+        var notificationClass = "";
+        switch (notification.Type)
+        {
+            case Enums.NotificationType.Success:
+                notificationClass = "alert-success";
+                break;
+            case Enums.NotificationType.Info:
+                notificationClass = "alert-secondary";
+                break;
+            case Enums.NotificationType.Error:
+                notificationClass = "alert-danger";
+                break;
+            default:
+                break;
+        }
+       <div class="container mb-3">
+            <div class="alert @notificationClass alert-dismissible fade show mb-2" role="alert">
+                 @Html.Raw(notification.Message)
+                 <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+       </div>
+    }
+}
