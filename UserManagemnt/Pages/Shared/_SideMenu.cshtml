@@ -1,5 +1,6 @@
-﻿@*
-    
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+@* 
 *@
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Environment;
 @{
@@ -19,6 +20,8 @@
                     <a href="/Index" aria-expanded="false"><i class="fa fa-home"></i> Home</a>
                 </li>
 
+                @if(signInManager.IsSignedIn(User))
+                {
                 <li>
                     <a href="#MasterData" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-database"></i> Master Data
@@ -35,26 +38,46 @@
                                 <img src="~/img/window-table.svg" />Create Person
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <img src="~/img/User.jpg" />Register Admin
-                            </a>
-                        </li>
-                        
                     </ul>
                 </li>
+                }
+                
+
+
+
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-user-shield"></i> @User?.Identity?.Name       
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/logout">
+                            <i class="fa fa-info-circle"></i> Logout
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/login" >
+                            <img src="~/img/User.jpg" />
+                             Login
+                        </a>
+                        <a href="/register" >
+                            <img src="~/img/User.jpg" />
+                             Register
+                        </a>
+                    </li>
+                }
             </ul>
 
         <p class="copyright">© 2023 ITS.<br />All rights reserved.<br /> PIMS - @Environment.EnvironmentName</p>
         </nav>
     
 
-    <script>
-        function redirectOnClick() {
 
-            document.location = 'Account/logout';
-        }
-
-    </script>
 
 </div>

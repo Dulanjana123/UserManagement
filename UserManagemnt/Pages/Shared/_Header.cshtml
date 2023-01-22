@@ -1,14 +1,13 @@
-﻿@*
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-@*@using OIMSWebApp.Models.User;
-@using Newtonsoft.Json;*@
 @using Microsoft.AspNetCore.Mvc.RazorPages;
-@*@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
-@using Microsoft.Extensions.Configuration; 
-@inject IConfiguration _configuration;*@
+
 
 <style type="text/css">
     a,
@@ -67,35 +66,18 @@
 </style>
 
 <nav class="page-header justify-content-between ">
-    @*<a class="navbar-brand"><i class="fa fa-home"></i> Home page</a>*@
-    @*<div style="float: right;">
-                <a class="navbar-brand" title="Add New"><img src="~/img/addnew.svg" /></a>
-                <a class="navbar-brand" title="Go to List"><img src="~/img/list.svg" /></a>
-            </div>
-
-
-        <div class="UserProfile">
-            <img src="~/img/User.jpg" alt="User" class="rounded-circle UserProfileimg" />
-            <button type="button" class="btn btn-outline-light logout-button" onClick="redirectOnClick()"> Logout </button>
-
-            <p>User name </p>
-        </div>*@
-
-
 
     <div class="form-top-menu">
         <ul>
-
-            <li>
-                <form asp-page="/Account/Logout" method="post" class="header-logut-form">
-                    <h6>
-                        @*@{UserDTO objUser = JsonConvert.DeserializeObject<UserDTO>(HttpContextAccessor.HttpContext.Request.Cookies[_configuration.GetValue<string>("Cookies:LoggedUserObject")]); }
-                        @objUser.DisplayName*@
-                    </h6>
-                    <button type="submit" class="btn btn-info logout-button"> Logout </button>
-                </form>
-            </li>
+            @if (signInManager.IsSignedIn(User))
+            {
+                <li>
+                    <h6>@User?.Identity?.Name</h6>
+                </li>
+            }
             <li><img src="~/img/UserIcon.svg" alt="User" class="UserProfileimg" /></li>
         </ul>
     </div>
 </nav>
+
+

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,34 @@ namespace UserManagemnt
                 options.UseSqlServer(
                     Configuration.GetConnectionString("PmsDbConnectionString")));
 
-            
+            //Admin ConnectionString
+            services.AddDbContext<AuthDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("AuthDbConnectionString")));
+
+            //Use identity and use AuthDbContext to identity
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AuthDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                //Default password setting
+                options.Password.RequireDigit = true;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+            });
+
+            services.ConfigureApplicationCookie(opttions =>
+            {
+                opttions.LoginPath = "/Login";
+                opttions.AccessDeniedPath = "/AccessDenied";
+            });
+
+
+            //Inject Repositories 
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IImageRepository, ImageRepositoryCloudinary>();
         }
@@ -58,6 +86,7 @@ namespace UserManagemnt
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
