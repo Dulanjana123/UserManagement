@@ -11,7 +11,6 @@ namespace UserManagemnt.Repositories
 
         //Task<IEnumerable<Person>> GetAllAsync(string tagName);
         Task<Person> GetAsync(Guid id);
-        Task<Person> GetAsync(string urlHandle);
         Task<Person> AddAsync(Person person);
         Task<Person> UpdateAsync(Person person);
         Task<bool> DeleteAsync(Guid id);

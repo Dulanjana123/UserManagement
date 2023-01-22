@@ -10,5 +10,6 @@ namespace UserManagemnt.Data
         }
 
         public DbSet<Person> Person { get; set; }
+        public DbSet<Email> Email { get; set; }
     }
 }

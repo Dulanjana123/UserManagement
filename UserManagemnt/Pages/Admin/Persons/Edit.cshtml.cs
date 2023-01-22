@@ -23,6 +23,9 @@ namespace UserManagemnt.Pages.Admin.Persons
 
         public IFormFile profileImage { get; set; }
 
+        [BindProperty]
+        public string Emails { get; set; }
+
         public EditModel(IPersonRepository personRepository)
         {
             _personRepository = personRepository;
@@ -30,12 +33,19 @@ namespace UserManagemnt.Pages.Admin.Persons
         public async Task OnGet(Guid id)
         {
             person = await _personRepository.GetAsync(id);
+
+            if(person !=null && person.EmailAddress != null)
+            {
+                Emails = person.EmailAddress.Name.ToString();
+            }
         }
 
         public async Task<IActionResult> OnPostEdit()
         {
             try
             {
+                person.EmailAddress = new Email() { Name = Emails };
+
                 await _personRepository.UpdateAsync(person);
                 ViewData["Notification"] = new Notification
                 {

@@ -17,6 +17,9 @@ namespace UserManagemnt.Pages.Admin.Persons
 
         public IFormFile profileImage { get; set; }
 
+        [BindProperty]
+        public string Email { get; set; }
+
         public DetailModel(IPersonRepository personRepository)
         {
             _personRepository = personRepository;
@@ -24,6 +27,11 @@ namespace UserManagemnt.Pages.Admin.Persons
         public async Task OnGet(Guid id)
         {
             person = await _personRepository.GetAsync(id);
+
+            if (person != null && person.EmailAddress != null)
+            {
+                Email = person.EmailAddress.Name.ToString();
+            }
         }
 
     }
