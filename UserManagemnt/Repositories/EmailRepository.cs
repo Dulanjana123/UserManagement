@@ -18,8 +18,6 @@ namespace UserManagemnt.Repositories
         {
             return await _pMSDbContext.Email.
                 ToListAsync();
-
-           // await _pMSDbContext.Email.Include.
         }
     }
 }

@@ -45,7 +45,6 @@
                         <input type="text" class="form-control" id="email" asp-for="Email" />
                     </div>
 
-
                     <div class="form-group">
                         <button type="submit" class="button button-primary" asp-page-handler="Edit">
                             <span><i class="far fa-plus-square"></i> Update</span>
@@ -56,7 +55,6 @@
                         </button>
                         <a asp-page="List" class="button button-info"><i class="fas fa-chevron-circle-left"></i> Back to List</a>
                     </div>
-
                 </div>
 
                 <div class="col-6">
@@ -88,11 +86,10 @@
                         }
                         else
                         {
-                             <label class="control-label" style="display:none;">Profile Image:</label>
-                             <br/>
-                             <img src="" id="profileImageDisplay" style="display:none; width:200px;height:auto;"  />
+                            <label class="control-label" style="display:none;">Profile Image:</label>
+                            <br/>
+                            <img src="" id="profileImageDisplay" style="display:none; width:200px;height:auto;"  />
                         }
-                       
                     </div>
 
                     <div class="form-group" style="display:none;">
@@ -100,7 +97,6 @@
                         <input type="text" class="form-control" id="profileImageUrl" asp-for="person.ProfileImageUrl"  readonly/>
                     </div>
                 </div>
-
             </div>
           </form>
 

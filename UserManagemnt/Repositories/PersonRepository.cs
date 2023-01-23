@@ -37,13 +37,19 @@ namespace UserManagemnt.Repositories
 
         public async Task<IEnumerable<Person>> GetAllAsync()
         {
-            return await _pMSDbContext.Person.Include(nameof(Person.EmailAddress)).Include(nameof(Person.PhoneNumber)).Include(nameof(Person.Address))
+            return await _pMSDbContext.Person
+                .Include(nameof(Person.EmailAddress))
+                .Include(nameof(Person.PhoneNumber))
+                .Include(nameof(Person.Address))
                 .ToListAsync();
         }
 
         public async Task<Person> GetAsync(Guid id)
         {
-            return await _pMSDbContext.Person.Include(nameof(Person.EmailAddress)).Include(nameof(Person.PhoneNumber)).Include(nameof(Person.Address))
+            return await _pMSDbContext.Person
+                .Include(nameof(Person.EmailAddress))
+                .Include(nameof(Person.PhoneNumber))
+                .Include(nameof(Person.Address))
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
