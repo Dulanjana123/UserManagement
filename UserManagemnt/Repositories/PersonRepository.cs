@@ -37,40 +37,35 @@ namespace UserManagemnt.Repositories
 
         public async Task<IEnumerable<Person>> GetAllAsync()
         {
-            return await _pMSDbContext.Person.Include(nameof(Person.EmailAddress))
+            return await _pMSDbContext.Person.Include(nameof(Person.EmailAddress)).Include(nameof(Person.PhoneNumber)).Include(nameof(Person.Address))
                 .ToListAsync();
         }
 
         public async Task<Person> GetAsync(Guid id)
         {
-            return await _pMSDbContext.Person.Include(nameof(Person.EmailAddress))
+            return await _pMSDbContext.Person.Include(nameof(Person.EmailAddress)).Include(nameof(Person.PhoneNumber)).Include(nameof(Person.Address))
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Person> UpdateAsync(Person person)
         {
-            var existingPerson = await _pMSDbContext.Person.Include(nameof(Person.EmailAddress))
+            var existingPerson = await _pMSDbContext.Person
+                .Include(nameof(Person.EmailAddress))
+                .Include(nameof(Person.PhoneNumber))
+                .Include(nameof(Person.Address))
                 .FirstOrDefaultAsync(x => x.Id == person.Id);
 
             if (existingPerson != null)
             {
                 existingPerson.FirstName = person.FirstName;
                 existingPerson.LastName = person.LastName;
-                existingPerson.Mobile = person.Mobile;
                 existingPerson.SSN = person.SSN;
                 existingPerson.DOB = person.DOB;
                 existingPerson.Address = person.Address;
                 existingPerson.ProfileImageUrl = person.ProfileImageUrl;
-
-                if (person.EmailAddress != null)
-                {
-                    //Delete the existing email
-                    _pMSDbContext.Email.RemoveRange(existingPerson.EmailAddress);
-
-                    person.EmailAddress.PersonId = existingPerson.Id;
-
-                    await _pMSDbContext.Email.AddAsync(person.EmailAddress);
-                }
+                existingPerson.Address = person.Address;
+                existingPerson.EmailAddress = person.EmailAddress;
+                existingPerson.PhoneNumber = person.PhoneNumber;
             }
             await _pMSDbContext.SaveChangesAsync();
             return existingPerson;

@@ -38,11 +38,12 @@ namespace UserManagemnt.Pages.Admin.Persons
             {
                 FirstName = AddPersonRequest.FirstName,
                 LastName = AddPersonRequest.LastName,
-                Mobile = AddPersonRequest.Mobile,
+                //PhoneNumber = AddPersonRequest.Phone,
+                PhoneNumber = new Phone() { Number = AddPersonRequest.Phone},
                 //Email = AddPersonRequest.Email,
                 SSN = AddPersonRequest.SSN,
                 DOB = AddPersonRequest.DOB,
-                Address = AddPersonRequest.Address,
+                Address = new Address() { Name = AddPersonRequest.Address},
                 ProfileImageUrl = AddPersonRequest.ProfileImageUrl,
                 EmailAddress = new Email() { Name = AddPersonRequest.Email }
 

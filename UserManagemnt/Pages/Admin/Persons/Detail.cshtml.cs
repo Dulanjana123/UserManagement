@@ -20,6 +20,11 @@ namespace UserManagemnt.Pages.Admin.Persons
         [BindProperty]
         public string Email { get; set; }
 
+        [BindProperty]
+        public string Address { get; set; }
+        [BindProperty]
+        public string Phone { get; set; }
+
         public DetailModel(IPersonRepository personRepository)
         {
             _personRepository = personRepository;
@@ -28,9 +33,17 @@ namespace UserManagemnt.Pages.Admin.Persons
         {
             person = await _personRepository.GetAsync(id);
 
-            if (person != null && person.EmailAddress != null)
+            if (person != null && person.EmailAddress !=null)
             {
                 Email = person.EmailAddress.Name.ToString();
+            }
+            if (person != null && person.PhoneNumber != null)
+            {
+                Phone = person.PhoneNumber.Number.ToString();
+            }
+            if (person != null && person.Address != null)
+            {
+                Address = person.Address.Name.ToString();
             }
         }
 

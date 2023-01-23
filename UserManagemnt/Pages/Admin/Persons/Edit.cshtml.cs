@@ -24,7 +24,13 @@ namespace UserManagemnt.Pages.Admin.Persons
         public IFormFile profileImage { get; set; }
 
         [BindProperty]
-        public string Emails { get; set; }
+        public string Email { get; set; }
+        [BindProperty]
+        public string Phone { get; set; }
+
+        [BindProperty]
+        public string Address { get; set; }
+
 
         public EditModel(IPersonRepository personRepository)
         {
@@ -36,7 +42,15 @@ namespace UserManagemnt.Pages.Admin.Persons
 
             if(person !=null && person.EmailAddress != null)
             {
-                Emails = person.EmailAddress.Name.ToString();
+                Email = person.EmailAddress.Name.ToString();
+            }
+            if(person != null && person.PhoneNumber != null)
+            {
+                Phone = person.PhoneNumber.Number.ToString();
+            }
+            if (person != null && person.Address != null)
+            {
+                Address = person.Address.Name.ToString();
             }
         }
 
@@ -44,7 +58,9 @@ namespace UserManagemnt.Pages.Admin.Persons
         {
             try
             {
-                person.EmailAddress = new Email() { Name = Emails };
+                person.EmailAddress = new Email() { Name = Email };
+                person.PhoneNumber = new Phone() { Number= Phone };
+                person.Address = new Address() { Name = Address };
 
                 await _personRepository.UpdateAsync(person);
                 ViewData["Notification"] = new Notification

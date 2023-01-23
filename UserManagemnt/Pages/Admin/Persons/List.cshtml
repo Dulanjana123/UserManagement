@@ -26,11 +26,11 @@
                             Last Name
                         </th>
                         <th>
-                            Mobile
+                            Phone
                         </th>
-                        @*<th>
+                        <th>
                             Email
-                        </th>*@
+                        </th>
                         <th>
                             SSN
                         </th>
@@ -50,11 +50,11 @@
                                 @Html.DisplayFor(modelItem => item.LastName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Mobile)
+                                @Html.DisplayFor(modelItem => item.PhoneNumber.Number)
                             </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmailAddress.Name)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.SSN)
                             </td>

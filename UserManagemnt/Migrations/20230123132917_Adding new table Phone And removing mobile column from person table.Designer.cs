@@ -3,41 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserManagemnt.Data;
 
 namespace UserManagemnt.Migrations
 {
     [DbContext(typeof(PMSDbContext))]
-    partial class PMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230123132917_Adding new table Phone And removing mobile column from person table")]
+    partial class AddingnewtablePhoneAndremovingmobilecolumnfrompersontable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("UserManagemnt.Models.MasterData.Address", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("PersonId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId")
-                        .IsUnique();
-
-                    b.ToTable("Address");
-                });
 
             modelBuilder.Entity("UserManagemnt.Models.MasterData.Email", b =>
                 {
@@ -64,6 +46,9 @@ namespace UserManagemnt.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DOB")
                         .HasColumnType("datetime2");
@@ -105,15 +90,6 @@ namespace UserManagemnt.Migrations
                     b.ToTable("Phone");
                 });
 
-            modelBuilder.Entity("UserManagemnt.Models.MasterData.Address", b =>
-                {
-                    b.HasOne("UserManagemnt.Models.MasterData.Person", null)
-                        .WithOne("Address")
-                        .HasForeignKey("UserManagemnt.Models.MasterData.Address", "PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("UserManagemnt.Models.MasterData.Email", b =>
                 {
                     b.HasOne("UserManagemnt.Models.MasterData.Person", null)
@@ -134,8 +110,6 @@ namespace UserManagemnt.Migrations
 
             modelBuilder.Entity("UserManagemnt.Models.MasterData.Person", b =>
                 {
-                    b.Navigation("Address");
-
                     b.Navigation("EmailAddress");
 
                     b.Navigation("PhoneNumber");

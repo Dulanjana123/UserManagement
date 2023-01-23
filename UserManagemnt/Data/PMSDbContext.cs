@@ -11,5 +11,7 @@ namespace UserManagemnt.Data
 
         public DbSet<Person> Person { get; set; }
         public DbSet<Email> Email { get; set; }
+        public DbSet<Phone> Phone { get; set; }
+        public DbSet<Address> Address { get; set; }
     }
 }
