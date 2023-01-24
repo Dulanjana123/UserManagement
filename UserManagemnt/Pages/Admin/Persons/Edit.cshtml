@@ -14,91 +14,102 @@
 
     @if(Model.person != null)
     {
-
-          <form method="post">
+         <form method="post">
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
+
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
                     <div class="form-group">
-                        <label for="id"  class="control-label">Id</label>
-                        <input type="text" class="form-control" id="id" asp-for="person.Id" readonly/>
+                        <label asp-for="person.Id" class="control-label"></label>
+                        <input asp-for="person.Id" class="form-control" readonly />
+                        <span asp-validation-for="person.Id" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="firstName"  class="control-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" asp-for="person.FirstName" />
+                        <label asp-for="person.FirstName" class="control-label"></label>
+                        <input asp-for="person.FirstName" class="form-control" />
+                        <span asp-validation-for="person.FirstName" class="text-danger"></span>
                     </div>
-
                     <div class="form-group">
-                        <label for="lastName"  class="control-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" asp-for="person.LastName" />
+                        <label asp-for="person.LastName" class="control-label"></label>
+                        <input asp-for="person.LastName"  class="form-control" />
+                        <span asp-validation-for="person.LastName" class="text-danger"></span>
                     </div>
-
                     <div class="form-group">
-                        <label for="mobile"  class="control-label">Mobile</label>
-                        <input type="text" class="form-control" id="mobile" asp-for="Phone" />
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input type="number" asp-for="Phone"  class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
                     </div>
-
-                     <div class="form-group">
-                        <label for="email"  class="control-label">Email</label>
-                        <input type="email" class="form-control" id="email" asp-for="Email" />
-                    </div>
-
                     <div class="form-group">
-                        <button type="submit" class="button button-primary" asp-page-handler="Edit">
-                            <span><i class="far fa-plus-square"></i> Update</span>
+                        <label asp-for="Email" class="control-label"></label>
+                        <input type="email" asp-for="Email"  class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="person.SSN" class="control-label"></label>
+                        <input asp-for="person.SSN"  class="form-control" />
+                        <span asp-validation-for="person.SSN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="person.DOB" class="control-label"></label>
+                        <input type="date" asp-for="person.DOB"  class="form-control" />
+                        <span asp-validation-for="person.DOB" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address"  class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div id="ImageUploadDiv">
+                            <label id=""  class="control-label" style="display:none">Profile Image:</label>
+                            @if (Model.person.ProfileImageUrl != null)
+                            {
+                                <label class="control-label">Profile Image:</label>
+                                <br/>
+                                <img src="@Model.person.ProfileImageUrl" id="profileImageDisplay" style="width:200px;height:auto;"  />
+                            }
+                            else
+                            {
+                                <label class="control-label" style="display:none;">Profile Image:</label>
+                                <br/>
+                                <img src="" id="profileImageDisplay" style="display:none; width:200px;height:auto;"  />
+                            }
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div id="ImageUploadDiv">
+                            <label asp-for="profileImage" class="control-label"></label>
+                            <input asp-for="profileImage" type="file" id="profileImageUpload" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none;">
+                        <label for="profileImageUrl"  class="control-label">Profile Image Url</label>
+                        <input type="text" class="form-control" id="profileImageUrl" asp-for="person.ProfileImageUrl"  readonly/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 ml-2">
+                    <div class="form-group float-lg-right">
+                        <button type="submit" class="button button-primary"  asp-page-handler="Edit">
+                            <span><i class="fas fa-save"></i> Save</span>
                         </button>
-
                         <button type="submit" class="button button-danger" asp-page-handler="Delete">
                             <span><i class="far fa-minus-square"></i> Delete</span>
                         </button>
                         <a asp-page="List" class="button button-info"><i class="fas fa-chevron-circle-left"></i> Back to List</a>
                     </div>
                 </div>
-
-                <div class="col-6">
-                    
-                    <div class="form-group">
-                        <label for="sSN"  class="control-label">SSN</label>
-                        <input type="text" class="form-control" id="sSN" asp-for="person.SSN"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="dOB"  class="control-label">Date Of Birth</label>
-                        <input type="date" class="form-control" id="dOB" asp-for="person.DOB"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="address"  class="control-label">Address</label>
-                        <input type="text" class="form-control" id="address" asp-for="Address"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="profileImageUpload"  class="control-label">Profile Image Upload</label>
-                        <input type="file" id="profileImageUpload" asp-for="profileImage"/>
-                        <hr/>
-                        @if (Model.person.ProfileImageUrl != null)
-                        {
-                            <label class="control-label">Profile Image:</label>
-                            <br/>
-                            <img src="@Model.person.ProfileImageUrl" id="profileImageDisplay" style="width:200px;height:auto;"  />
-                        }
-                        else
-                        {
-                            <label class="control-label" style="display:none;">Profile Image:</label>
-                            <br/>
-                            <img src="" id="profileImageDisplay" style="display:none; width:200px;height:auto;"  />
-                        }
-                    </div>
-
-                    <div class="form-group" style="display:none;">
-                        <label for="profileImageUrl"  class="control-label">Profile Image Url</label>
-                        <input type="text" class="form-control" id="profileImageUrl" asp-for="person.ProfileImageUrl"  readonly/>
-                    </div>
-                </div>
             </div>
-          </form>
+        </form>
 
     }
     else
