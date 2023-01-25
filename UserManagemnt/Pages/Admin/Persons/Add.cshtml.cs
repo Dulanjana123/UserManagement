@@ -22,8 +22,6 @@ namespace UserManagemnt.Pages.Admin.Persons
 
         [BindProperty]
         public IFormFile profileImage { get; set; }
-        //[BindProperty]
-        //public string EmailAddress { get; set; }
         public AddModel(IPersonRepository personRepository)
         {
             _personRepository = personRepository;
@@ -38,9 +36,7 @@ namespace UserManagemnt.Pages.Admin.Persons
             {
                 FirstName = AddPersonRequest.FirstName,
                 LastName = AddPersonRequest.LastName,
-                //PhoneNumber = AddPersonRequest.Phone,
                 PhoneNumber = new Phone() { Number = AddPersonRequest.Phone},
-                //Email = AddPersonRequest.Email,
                 SSN = AddPersonRequest.SSN,
                 DOB = AddPersonRequest.DOB,
                 Address = new Address() { Name = AddPersonRequest.Address},
