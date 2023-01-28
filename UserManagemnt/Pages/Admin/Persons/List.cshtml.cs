@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -19,6 +21,9 @@ namespace UserManagemnt.Pages.Admin.Persons
         private readonly IPersonRepository _personRepository;
 
         public List<Person> PersonList { get; set; }
+
+        [BindProperty]
+        public Person person { get; set; }
         public ListModel(IPersonRepository personRepository)
         {
             _personRepository = personRepository;
@@ -32,5 +37,13 @@ namespace UserManagemnt.Pages.Admin.Persons
             }
             PersonList = (await _personRepository.GetAllAsync())?.ToList();
         }
+
+
+        public JsonResult OnGetPersonDetail(Guid id)
+        {
+            var personList = _personRepository.GetAsync(id).GetAwaiter().GetResult();
+            return new JsonResult(personList);
+        }
+
     }
 }

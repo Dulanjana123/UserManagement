@@ -12,58 +12,119 @@
 
             <partial name="_Notification">
 
+
             @if (Model.PersonList != null && Model.PersonList.Any())
             {
-              <table class="table ">
-                <thead>
-                    <tr>
-                        <th>
-                            First Name
-                        </th>
-                        <th>
-                            Last Name
-                        </th>
-                        <th>
-                            Phone
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            SSN
-                        </th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.PersonList)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PhoneNumber.Number)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EmailAddress.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SSN)
-                            </td>
-                            <td>
-                                <a class="table-btn-edit" asp-page="./Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i> Edit</a> 
-                                <a class="table-btn-edit" asp-page="./Detail" asp-route-id="@item.Id"><i class="fas fa-minus-square"></i> Detail</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-              </table>
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Phone
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        SSN
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.PersonList)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PhoneNumber.Number)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmailAddress.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SSN)
+                                        </td>
+                                        <td>
+                                            <a class="table-btn-edit" asp-page="./Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i> Edit</a> |
+                                            <a class="table-btn-edit" onclick="loadDetails('@item.Id')"><i class="fas fa-minus-square"></i> Details</a> 
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-4">
+                       <div id="form1"  style="display:none; border-left: 4px groove;">
+                            <form id="formDetails">
+                             <div id="txnDetails">
+                                 <h6><i class="far fa-user"></i> Person Details</h6>
+
+                                   <dl class="inner-form-row">
+                                       
+                                       <dt class="col-sm-4">
+                                          Profile Picture
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                           <img src="" id="profileImageDisplay" style="width:200px;height:auto;"  />
+                                       </dd>
+                                       <dt class="col-sm-4">
+                                           First Name
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                       </dd>
+                                       <dt class="col-sm-4">
+                                           Last Name
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                       </dd>
+                                       <dt class="col-sm-4">
+                                           Phone number
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                       </dd>
+                                       <dt class="col-sm-4">
+                                           Email 
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                       </dd>
+                                       <dt class="col-sm-4">
+                                           SSN 
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                       </dd>
+                                       <dt class="col-sm-4">
+                                           DOB 
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                       </dd>
+                                       <dt class="col-sm-4">
+                                           Address 
+                                       </dt>
+                                       <dd class="col-sm-6" >
+                                       </dd>
+                                       
+                                   </dl>
+                             </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             }
             else
             {
@@ -71,7 +132,45 @@
                     <p>No person were found!</p>
                 </div>
             }
-
-
         </div>
-    </div>
+</div>
+
+
+
+        
+        
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        const profileImageDisplay = document.getElementById('profileImageDisplay');
+
+        function loadDetails(Id) {
+            $.ajax({
+                type: 'GET',
+                
+                url: "@Url.Page("List/")?handler=PersonDetail",
+                contentType: "application/json",
+                data: { id: Id },
+                success: function(response) {
+                    console.log(response);
+
+                    $('#txnDetails').find('dd:eq(1)').text(response.firstName)
+                    $('#txnDetails').find('dd:eq(2)').text(response.lastName)
+                    $('#txnDetails').find('dd:eq(3)').text(response.phoneNumber.number)
+                    $('#txnDetails').find('dd:eq(4)').text(response.emailAddress.name)
+                    $('#txnDetails').find('dd:eq(5)').text(response.ssn)
+                    $('#txnDetails').find('dd:eq(6)').text(response.dob)
+                    $('#txnDetails').find('dd:eq(7)').text(response.address.name)
+                    profileImageDisplay.src = response.profileImageUrl;
+                     
+                    document.getElementById('form1').style.display = '';
+                },
+                error: function(data) {
+                    alert("Cannot Load data" + data);
+                },
+            });
+        }
+    </script>
+}

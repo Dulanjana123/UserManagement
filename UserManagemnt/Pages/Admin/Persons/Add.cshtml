@@ -20,37 +20,37 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="AddPersonRequest.FirstName" class="control-label"> First Name</label>
-                        <input asp-for="AddPersonRequest.FirstName" class="form-control" />
+                        <input asp-for="AddPersonRequest.FirstName" class="form-control" required/>
                         <span asp-validation-for="AddPersonRequest.FirstName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="AddPersonRequest.LastName" class="control-label">Last Name</label>
-                        <input asp-for="AddPersonRequest.LastName"  class="form-control" />
+                        <input asp-for="AddPersonRequest.LastName"  class="form-control" required/>
                         <span asp-validation-for="AddPersonRequest.LastName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="AddPersonRequest.Phone" class="control-label">Phone Number</label>
-                        <input  asp-for="AddPersonRequest.Phone"  class="form-control" />
+                        <input  asp-for="AddPersonRequest.Phone"  class="form-control" required/>
                         <span asp-validation-for="AddPersonRequest.Phone" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="AddPersonRequest.Email" class="control-label">Email Address</label>
-                        <input type="email" asp-for="AddPersonRequest.Email"  class="form-control" />
+                        <input type="email" asp-for="AddPersonRequest.Email"  class="form-control" required/>
                         <span asp-validation-for="AddPersonRequest.Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="AddPersonRequest.SSN" class="control-label">SSN</label>
-                        <input asp-for="AddPersonRequest.SSN"  class="form-control" />
+                        <input asp-for="AddPersonRequest.SSN"  class="form-control" required/>
                         <span asp-validation-for="AddPersonRequest.SSN" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="AddPersonRequest.DOB" class="control-label">Date Of Birth</label>
-                        <input type="date" asp-for="AddPersonRequest.DOB"  class="form-control" />
+                        <input type="date" asp-for="AddPersonRequest.DOB"  class="form-control" required/>
                         <span asp-validation-for="AddPersonRequest.DOB" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="AddPersonRequest.Address" class="control-label">Address</label>
-                        <input asp-for="AddPersonRequest.Address"  class="form-control" />
+                        <input asp-for="AddPersonRequest.Address"  class="form-control" required/>
                         <span asp-validation-for="AddPersonRequest.Address" class="text-danger"></span>
                     </div>
                     
@@ -79,11 +79,15 @@
             <div class="row">
                 <div class="col-md-6 ml-2">
                     <div class="form-group float-lg-right">
-                        <button type="submit" class="button button-primary"  asp-page-handler="Edit">
-                            <span><i class="fas fa-save"></i> Save</span>
+                        <button type="submit" class="button button-primary">
+                            <span><i class="far fa-plus-square"></i> 
+                                Create 
+                            </span>
                         </button>
-                        <button type="submit" class="button button-danger" asp-page-handler="Delete">
-                            <span><i class="far fa-minus-square"></i> Delete</span>
+                        <button type="reset" class="button button-danger">
+                            <span><i class="far fa-minus-square"></i> 
+                                Reset 
+                            </span>
                         </button>
                         <a asp-page="List" class="button button-info"><i class="fas fa-chevron-circle-left"></i> Back to List</a>
                     </div>
