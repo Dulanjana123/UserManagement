@@ -22,8 +22,6 @@ namespace UserManagemnt.Pages.Admin.Persons
 
         public List<Person> PersonList { get; set; }
 
-        [BindProperty]
-        public Person person { get; set; }
         public ListModel(IPersonRepository personRepository)
         {
             _personRepository = personRepository;
@@ -41,8 +39,8 @@ namespace UserManagemnt.Pages.Admin.Persons
 
         public JsonResult OnGetPersonDetail(Guid id)
         {
-            var personList = _personRepository.GetAsync(id).GetAwaiter().GetResult();
-            return new JsonResult(personList);
+            var person = _personRepository.GetAsync(id).GetAwaiter().GetResult();
+            return new JsonResult(person);
         }
 
     }
