@@ -71,8 +71,8 @@
 
                     <div class="col-md-4">
                        <div id="form1"  style="display:none; border-left: 4px groove;">
-                            <form id="formDetails">
-                             <div id="txnDetails">
+                           
+                             <div id="perDetails">
                                 
                                      <div class="row">
                                         <div class="col-sm-8">
@@ -130,8 +130,9 @@
                                        </dd>
                                        
                                    </dl>
+
                              </div>
-                            </form>
+                           
                         </div>
                     </div>
                 </div>
@@ -166,13 +167,13 @@
                 success: function(response) {
                     console.log(response);
 
-                    $('#txnDetails').find('dd:eq(1)').text(response.firstName)
-                    $('#txnDetails').find('dd:eq(2)').text(response.lastName)
-                    $('#txnDetails').find('dd:eq(3)').text(response.phoneNumber.number)
-                    $('#txnDetails').find('dd:eq(4)').text(response.emailAddress.name)
-                    $('#txnDetails').find('dd:eq(5)').text(response.ssn)
-                    $('#txnDetails').find('dd:eq(6)').text(response.dob)
-                    $('#txnDetails').find('dd:eq(7)').text(response.address.name)
+                    $('#perDetails').find('dd:eq(1)').text(response.firstName)
+                    $('#perDetails').find('dd:eq(2)').text(response.lastName)
+                    $('#perDetails').find('dd:eq(3)').text(response.phoneNumber.number)
+                    $('#perDetails').find('dd:eq(4)').text(response.emailAddress.name)
+                    $('#perDetails').find('dd:eq(5)').text(response.ssn)
+                    $('#perDetails').find('dd:eq(6)').text(response.dob)
+                    $('#perDetails').find('dd:eq(7)').text(response.address.name)
                     profileImageDisplay.src = response.profileImageUrl;
                      
                     document.getElementById('form1').style.display = '';
