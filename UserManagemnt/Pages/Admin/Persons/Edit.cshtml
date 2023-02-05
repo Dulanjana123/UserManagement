@@ -1,4 +1,8 @@
-﻿@page "{id:Guid}"
+﻿@*Accept route parameter using string
+    Parameter is id
+    type is Guid
+*@
+@page "{id:Guid}"
 @model UserManagemnt.Pages.Admin.Persons.EditModel
 @{
 }
@@ -12,6 +16,9 @@
 
     <partial name="_Notification">
 
+    @* Check person object not null
+       if not null then shows object values
+    *@
     @if(Model.person != null)
     {
          <form method="post">

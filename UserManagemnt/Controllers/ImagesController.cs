@@ -12,11 +12,20 @@ namespace UserManagemnt.Controllers
     {
         private readonly IImageRepository _imageRepository;
 
+        /// <summary>
+        /// Inject ImageRepository
+        /// </summary>
+        /// <param name="imageRepository"></param>
         public ImagesController(IImageRepository imageRepository)
         {
             _imageRepository = imageRepository;
         }
 
+        /// <summary>
+        /// Provide image file to image upload method in image repository
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns>Image url</returns>
         [HttpPost]
         public async Task<IActionResult> UploadAsync(IFormFile file)
         {
@@ -27,6 +36,7 @@ namespace UserManagemnt.Controllers
                 return Problem("Something went wrong!", null, (int)HttpStatusCode.InternalServerError);
             }
 
+            //return Json format imageurl
             return Json(new { link = imageUrl });
         }
     }

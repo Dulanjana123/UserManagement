@@ -13,6 +13,11 @@ namespace UserManagemnt.Pages
         [BindProperty]
         public Login LoginViewModel { get; set; }
 
+        /// <summary>
+        /// Inject UserManager class
+        /// from AspNetCore.Identity
+        /// </summary>
+        /// <param name="signInManager"></param>
         public LoginModel(SignInManager<IdentityUser> signInManager)
         {
             this.signInManager = signInManager;
@@ -22,8 +27,15 @@ namespace UserManagemnt.Pages
         {
         }
 
+        /// <summary>
+        /// Login method
+        /// </summary>
+        /// <param name="ReturnUrl"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost(string? ReturnUrl)
         {
+            // if there is any issues with the data posted to the method
+            // based on the data added to the properties of LoginViewModel.
             if (ModelState.IsValid)
             {
                 var signInResult = await signInManager.PasswordSignInAsync(

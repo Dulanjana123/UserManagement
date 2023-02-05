@@ -104,16 +104,25 @@
 @section Scripts {
     <script>
 
+        //Create constant to profileImageUpload element
         const profileImageUploadElement = document.getElementById('profileImageUpload');
+
+        //Create constant to profileImageUrl element to save image url
         const profileImageUrl = document.getElementById('profileImageUrl');
+
+        //Create constant to profileImageDisplay element to display image
         const profileImageDisplay = document.getElementById('profileImageDisplay');
 
         async function uploadProfileImage(e) {
             console.log(e.target.files[0]);
             
+            //Create new variable
             let data = new FormData();
+
+            //inside data append file
             data.append('file', e.target.files[0]);
 
+            //use js fetch api to call images api
             await fetch('/api/images', {
                 method: 'POST',
                 headers: {
@@ -122,12 +131,16 @@
                 body: data
             }).then(response => response.json())
                 .then(result => {
+                    //get profile image url into the profileImageUrl element to save in the database
                     profileImageUrl.value = result.link;
+
+                    //display uploaded profile image
                     profileImageDisplay.style.display = 'block';
                     profileImageDisplay.src = result.link;
                 });
         }
 
+        //when profileImageUpload element change, execute/call the uploadProfileImage function
         profileImageUploadElement.addEventListener('change', uploadProfileImage);
 
     </script>

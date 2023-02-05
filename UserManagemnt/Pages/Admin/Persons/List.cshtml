@@ -12,7 +12,9 @@
 
             <partial name="_Notification">
 
-
+            @*Check if PersonList is not null and PersonList contains any or Not empty List
+              If PersonList found display them in the table
+            *@
             @if (Model.PersonList != null && Model.PersonList.Any())
             {
                 <div class="row">
@@ -41,6 +43,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                                @*Using @ symbol to write c# code inside the HTML page  *@
+                                @*Table body needs to contain all the list of persons stored
+                                  in the DB 
+                                  Model.PersonList is the public property*@
                                 @foreach (var item in Model.PersonList)
                                 {
                                     <tr>
@@ -155,8 +162,13 @@
 
     <script type="text/javascript">
 
+        //Create constant to profileImageDisplay element
         const profileImageDisplay = document.getElementById('profileImageDisplay');
 
+        //When Details button click
+        //pass the person id in to the loadDetails function
+        //Using page handler pass id and call to the code behind PersonDetail method
+        //then get person who has this Id
         function loadDetails(Id) {
             $.ajax({
                 type: 'GET',
@@ -167,6 +179,7 @@
                 success: function(response) {
                     console.log(response);
 
+                    //bind value to related HTML element
                     $('#perDetails').find('dd:eq(1)').text(response.firstName)
                     $('#perDetails').find('dd:eq(2)').text(response.lastName)
                     $('#perDetails').find('dd:eq(3)').text(response.phoneNumber.number)

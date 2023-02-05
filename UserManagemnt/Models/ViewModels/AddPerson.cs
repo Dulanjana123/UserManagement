@@ -2,6 +2,7 @@
 
 namespace UserManagemnt.Models.ViewModels
 {
+    //view models only contain the data (represented by properties) that you want to use on your view
     public class AddPerson
     {
         public string FirstName { get; set; }
